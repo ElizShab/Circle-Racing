@@ -11,7 +11,7 @@ namespace CircleRacing
     public partial class Visualization : Form
     {
         //Большие и малые полуоси эллипсов
-        private int a1 = 150, b1 = 200, a2 = 200, b2 = 330;
+        private int a1 = 100, b1 = 310, a2 = 120, b2 = 330;
         //Центра эллипса
         private Point center;
         double angle1 = 0, angle2 = 0;
@@ -19,11 +19,10 @@ namespace CircleRacing
         private void Picture_PB_Paint(object sender, PaintEventArgs e)
         {
             if (!Move_T.Enabled) return;
-            using (Pen pen = new Pen(pictureBox1.BackColor))
+            using (Pen pen = new Pen(Color.Black))
             {
-                e.Graphics.DrawEllipse(pen, Rectangle.FromLTRB(center.X - b1, center.Y - a1, center.X + b1, center.Y + a1));
-                pen.Color = pictureBox2.BackColor;
-                e.Graphics.DrawEllipse(pen, Rectangle.FromLTRB(center.X - b2, center.Y - a2, center.X + b2, center.Y + a2));
+                e.Graphics.DrawEllipse(pen, Rectangle.FromLTRB(center.X - 280, center.Y - 70, center.X + 280, center.Y + 70));
+                e.Graphics.DrawEllipse(pen, Rectangle.FromLTRB(center.X - 360, center.Y - 150, center.X + 360, center.Y + 150));
             }
         }
         public Visualization()

@@ -19,9 +19,14 @@ namespace CircleRacing
 
         private void Start_B_Click(object sender, EventArgs e)
         {
-            Visualization Visual = new Visualization();
-            Visual.Show();
+            new Visualization().Show();
             this.Hide();
+        }
+
+        private void EditListMembers_B_Click(object sender, EventArgs e)
+        {
+            new EditMembers().Show();
+            
         }
     }
 }

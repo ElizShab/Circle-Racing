@@ -57,7 +57,7 @@ namespace CircleRacing
             this.pictureBox2.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(67, 39);
+            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -66,7 +66,7 @@ namespace CircleRacing
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox1.Location = new System.Drawing.Point(12, 23);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(72, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(29, 27);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -79,6 +79,7 @@ namespace CircleRacing
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Picture_PB);
             this.Name = "Visualization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Visualization";
             ((System.ComponentModel.ISupportInitialize)(this.Picture_PB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
