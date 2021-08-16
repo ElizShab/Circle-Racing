@@ -1,0 +1,17 @@
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.exe
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.deps.json
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.runtimeconfig.json
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.runtimeconfig.dev.json
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.dll
+C:\Users\rozhk\source\repos\CircleRacing\bin\Debug\netcoreapp3.1\CircleRacing.pdb
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.csproj.AssemblyReference.cache
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.Start_menu.resources
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.csproj.GenerateResource.cache
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.AssemblyInfoInputs.cache
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.AssemblyInfo.cs
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.csproj.CoreCompileInputs.cache
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.dll
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.pdb
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.genruntimeconfig.cache
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.Visualization.resources
