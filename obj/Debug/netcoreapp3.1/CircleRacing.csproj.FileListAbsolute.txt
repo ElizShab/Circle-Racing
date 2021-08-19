@@ -17,3 +17,4 @@ C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.ge
 C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.Visualization.resources
 C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.ConfigurationPanel.resources
 C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.EditMembers.resources
+C:\Users\rozhk\source\repos\CircleRacing\obj\Debug\netcoreapp3.1\CircleRacing.Finish.resources

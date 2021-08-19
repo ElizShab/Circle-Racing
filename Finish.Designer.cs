@@ -1,7 +1,7 @@
 ﻿
 namespace CircleRacing
 {
-    partial class EditMembers
+    partial class Finish
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,30 @@ namespace CircleRacing
         /// </summary>
         private void InitializeComponent()
         {
-            this.AddMember_B = new System.Windows.Forms.Button();
-            this.DeleteMember_B = new System.Windows.Forms.Button();
+            this.Repeat_B = new System.Windows.Forms.Button();
+            this.BackMenu_B = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // AddMember_B
+            // Repeat_B
             // 
-            this.AddMember_B.Location = new System.Drawing.Point(506, 99);
-            this.AddMember_B.Name = "AddMember_B";
-            this.AddMember_B.Size = new System.Drawing.Size(139, 65);
-            this.AddMember_B.TabIndex = 1;
-            this.AddMember_B.Text = "Добавить участника";
-            this.AddMember_B.UseVisualStyleBackColor = true;
-            this.AddMember_B.Click += new System.EventHandler(this.AddMember_B_Click);
+            this.Repeat_B.Location = new System.Drawing.Point(143, 390);
+            this.Repeat_B.Name = "Repeat_B";
+            this.Repeat_B.Size = new System.Drawing.Size(173, 29);
+            this.Repeat_B.TabIndex = 0;
+            this.Repeat_B.Text = "Ещё один круг";
+            this.Repeat_B.UseVisualStyleBackColor = true;
+            this.Repeat_B.Click += new System.EventHandler(this.Repeat_B_Click);
             // 
-            // DeleteMember_B
+            // BackMenu_B
             // 
-            this.DeleteMember_B.Location = new System.Drawing.Point(506, 186);
-            this.DeleteMember_B.Name = "DeleteMember_B";
-            this.DeleteMember_B.Size = new System.Drawing.Size(139, 57);
-            this.DeleteMember_B.TabIndex = 2;
-            this.DeleteMember_B.Text = "Удалить участника";
-            this.DeleteMember_B.UseVisualStyleBackColor = true;
-            this.DeleteMember_B.Click += new System.EventHandler(this.DeleteMember_B_Click);
+            this.BackMenu_B.Location = new System.Drawing.Point(143, 431);
+            this.BackMenu_B.Name = "BackMenu_B";
+            this.BackMenu_B.Size = new System.Drawing.Size(173, 70);
+            this.BackMenu_B.TabIndex = 1;
+            this.BackMenu_B.Text = "Перейти в главное меню";
+            this.BackMenu_B.UseVisualStyleBackColor = true;
+            this.BackMenu_B.Click += new System.EventHandler(this.BackMenu_B_Click);
             // 
             // listBox1
             // 
@@ -70,29 +70,30 @@ namespace CircleRacing
             "8",
             "9",
             "10"});
-            this.listBox1.Location = new System.Drawing.Point(12, 14);
+            this.listBox1.Location = new System.Drawing.Point(12, 63);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(448, 312);
-            this.listBox1.TabIndex = 3;
+            this.listBox1.TabIndex = 2;
             // 
-            // EditMembers
+            // Finish
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 344);
+            this.ClientSize = new System.Drawing.Size(472, 514);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.DeleteMember_B);
-            this.Controls.Add(this.AddMember_B);
-            this.Name = "EditMembers";
+            this.Controls.Add(this.BackMenu_B);
+            this.Controls.Add(this.Repeat_B);
+            this.Name = "Finish";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список участников";
+            this.Text = "Результат гонки";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button AddMember_B;
-        private System.Windows.Forms.Button DeleteMember_B;
-        public System.Windows.Forms.ListBox listBox1;
+
+        private System.Windows.Forms.Button Repeat_B;
+        private System.Windows.Forms.Button BackMenu_B;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
