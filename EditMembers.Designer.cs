@@ -36,7 +36,7 @@ namespace CircleRacing
             // 
             // AddMember_B
             // 
-            this.AddMember_B.Location = new System.Drawing.Point(506, 99);
+            this.AddMember_B.Location = new System.Drawing.Point(360, 351);
             this.AddMember_B.Name = "AddMember_B";
             this.AddMember_B.Size = new System.Drawing.Size(139, 65);
             this.AddMember_B.TabIndex = 1;
@@ -46,7 +46,7 @@ namespace CircleRacing
             // 
             // DeleteMember_B
             // 
-            this.DeleteMember_B.Location = new System.Drawing.Point(506, 186);
+            this.DeleteMember_B.Location = new System.Drawing.Point(360, 438);
             this.DeleteMember_B.Name = "DeleteMember_B";
             this.DeleteMember_B.Size = new System.Drawing.Size(139, 57);
             this.DeleteMember_B.TabIndex = 2;
@@ -56,36 +56,27 @@ namespace CircleRacing
             // 
             // listBox1
             // 
-            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listBox1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 28;
-            this.listBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
+            this.listBox1.ItemHeight = 25;
             this.listBox1.Location = new System.Drawing.Point(12, 14);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(100);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(448, 312);
+            this.listBox1.Size = new System.Drawing.Size(855, 304);
             this.listBox1.TabIndex = 3;
             // 
             // EditMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 344);
+            this.ClientSize = new System.Drawing.Size(878, 511);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.DeleteMember_B);
             this.Controls.Add(this.AddMember_B);
             this.Name = "EditMembers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список участников";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditMembers_FormClosed);
             this.ResumeLayout(false);
 
         }

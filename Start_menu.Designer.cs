@@ -39,7 +39,7 @@ namespace CircleRacing
             // 
             // Start_B
             // 
-            this.Start_B.Location = new System.Drawing.Point(98, 227);
+            this.Start_B.Location = new System.Drawing.Point(129, 227);
             this.Start_B.Name = "Start_B";
             this.Start_B.Size = new System.Drawing.Size(118, 57);
             this.Start_B.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace CircleRacing
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 183);
+            this.label1.Location = new System.Drawing.Point(94, 183);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 1;
@@ -58,7 +58,7 @@ namespace CircleRacing
             // 
             // TrackLength_NUD
             // 
-            this.TrackLength_NUD.Location = new System.Drawing.Point(174, 176);
+            this.TrackLength_NUD.Location = new System.Drawing.Point(205, 176);
             this.TrackLength_NUD.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -82,7 +82,7 @@ namespace CircleRacing
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 148);
+            this.label2.Location = new System.Drawing.Point(94, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(187, 20);
             this.label2.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace CircleRacing
             // 
             // EditListMembers_B
             // 
-            this.EditListMembers_B.Location = new System.Drawing.Point(250, 12);
+            this.EditListMembers_B.Location = new System.Drawing.Point(330, 12);
             this.EditListMembers_B.Name = "EditListMembers_B";
             this.EditListMembers_B.Size = new System.Drawing.Size(33, 29);
             this.EditListMembers_B.TabIndex = 4;
@@ -102,7 +102,7 @@ namespace CircleRacing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(295, 296);
+            this.ClientSize = new System.Drawing.Size(375, 296);
             this.Controls.Add(this.EditListMembers_B);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TrackLength_NUD);
@@ -111,7 +111,7 @@ namespace CircleRacing
             this.Name = "Start_menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное меню";
-            this.Load += new System.EventHandler(this.Start_menu_Load);
+            this.Shown += new System.EventHandler(this.Start_menu_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.TrackLength_NUD)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

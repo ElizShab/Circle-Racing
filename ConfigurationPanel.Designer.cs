@@ -158,7 +158,7 @@ namespace CircleRacing
             this.AutoSpeed_TB.Size = new System.Drawing.Size(143, 56);
             this.AutoSpeed_TB.SmallChange = 5;
             this.AutoSpeed_TB.TabIndex = 12;
-            this.AutoSpeed_TB.Value = 60;
+            this.AutoSpeed_TB.Value = 1;
             this.AutoSpeed_TB.Scroll += new System.EventHandler(this.AutoSpeed_TB_Scroll);
             // 
             // RegAuto_B
@@ -207,7 +207,7 @@ namespace CircleRacing
             this.TruckSpeed_TB.Size = new System.Drawing.Size(143, 56);
             this.TruckSpeed_TB.SmallChange = 5;
             this.TruckSpeed_TB.TabIndex = 14;
-            this.TruckSpeed_TB.Value = 60;
+            this.TruckSpeed_TB.Value = 1;
             this.TruckSpeed_TB.Scroll += new System.EventHandler(this.TruckSpeed_TB_Scroll);
             // 
             // label6
@@ -307,7 +307,7 @@ namespace CircleRacing
             this.MotorSpeed_TB.Size = new System.Drawing.Size(143, 56);
             this.MotorSpeed_TB.SmallChange = 5;
             this.MotorSpeed_TB.TabIndex = 14;
-            this.MotorSpeed_TB.Value = 60;
+            this.MotorSpeed_TB.Value = 1;
             this.MotorSpeed_TB.Scroll += new System.EventHandler(this.MotorSpeed_TB_Scroll);
             // 
             // label13
@@ -367,7 +367,7 @@ namespace CircleRacing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 338);
+            this.ClientSize = new System.Drawing.Size(1180, 321);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.Motorcycle_GB);
             this.Controls.Add(this.Truck_GB);
@@ -375,6 +375,7 @@ namespace CircleRacing
             this.Name = "ConfigurationPanel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Регистрация транспортных средств";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConfigurationPanel_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.PeopleInAuto_NUD)).EndInit();
             this.Auto_GB.ResumeLayout(false);
             this.Auto_GB.PerformLayout();

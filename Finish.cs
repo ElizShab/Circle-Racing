@@ -15,12 +15,15 @@ namespace CircleRacing
             InitializeComponent();
         }
 
+        //Запуск гонки
         private void Repeat_B_Click(object sender, EventArgs e)
         {
             new Visualization().Show();
             this.Hide();
         }
 
+
+        //Возврат к стартовому меню
         private void BackMenu_B_Click(object sender, EventArgs e)
         {
             new Start_menu().Show();
