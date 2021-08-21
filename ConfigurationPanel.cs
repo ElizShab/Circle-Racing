@@ -36,14 +36,57 @@ namespace CircleRacing
         //Регистрация автомобиля
         public void RegAuto_B_Click(object sender, EventArgs e)
         {
-            string DataAuto = "Автомобиль. Скорость: "+ AutoSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + AutoPunctureProbability_Text.Text.Replace(".", ",") + "; Количество человек в машине: " + PeopleInAuto_NUD.Value.ToString() + Environment.NewLine;
-            File.AppendAllText(path, DataAuto);
+            if (File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt").Length >= 10)
+            {
+                MessageBox.Show("Достигнут лимит количества участиков");
+            }
+            else
+            {
+                if (AutoPunctureProbability_Text.Text == String.Empty)
+                {
+                    MessageBox.Show("Введите вероятность прокола колеса автомобиля");
+                    return;
+                }
+                else
+                {
+                    string DataAuto = "Автомобиль. Скорость: " + AutoSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + AutoPunctureProbability_Text.Text.Replace(".", ",") + "; Количество человек в машине: " + PeopleInAuto_NUD.Value.ToString() + Environment.NewLine+"; ";
+                    File.AppendAllText(path, DataAuto); 
+                    AutoSpeed_TB.Value = 1;
+                    ASpeed_L.Text = AutoSpeed_TB.Value.ToString();
+                    AutoPunctureProbability_Text.Text = "";
+                    PeopleInAuto_NUD.Value = 1;
+                }
+            }
+            
         }
         //Регистрация грузовика
         private void RegTruck_B_Click(object sender, EventArgs e)
         {
-            string DataTruck = "Грузовик. Скорость: " + TruckSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + TruckPunctureProbability_Text.Text.Replace(".",",") + "; Вес груза: " + TruckWeight_Text.Text + Environment.NewLine;
-            File.AppendAllText(path, DataTruck);
+            if (File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt").Length >= 10)
+            {
+                MessageBox.Show("Достигнут лимит количества участиков");
+            }
+            else
+            {
+                if (TruckPunctureProbability_Text.Text == String.Empty)
+                {
+                    MessageBox.Show("Введите вероятность прокола колеса грузовика");
+                    return;
+                }
+                else if(TruckWeight_Text.Text == String.Empty)
+                {
+                    MessageBox.Show("Введите веc груза для грузовика");
+                    return;
+                }
+                else {
+                    string DataTruck = "Грузовик. Скорость: " + TruckSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + TruckPunctureProbability_Text.Text.Replace(".", ",") + "; Вес груза: " + TruckWeight_Text.Text + Environment.NewLine + "; ";
+                    File.AppendAllText(path, DataTruck);
+                    TruckSpeed_TB.Value = 1;
+                    TSpeed_L.Text = TruckSpeed_TB.Value.ToString();
+                    TruckPunctureProbability_Text.Text = "";
+                    TruckWeight_Text.Text = "";
+                }               
+            }
         }
 
         //Регистрация мотоцикла
@@ -57,8 +100,27 @@ namespace CircleRacing
             else
                 result = "-";
             //Регистрация
-            string DataTruck = "Мотоцикл. Скорость: " + MotorSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + MotorPunctureProbability_Text.Text.Replace(".", ",") + "; Наличие коляски: " + result + Environment.NewLine;
-            File.AppendAllText(path, DataTruck);
+            if (File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt").Length >= 10)
+            {
+                MessageBox.Show("Достигнут лимит количества участиков");
+            }
+            else
+            {
+                if (MotorPunctureProbability_Text.Text == String.Empty)
+                {
+                    MessageBox.Show("Введите вероятность прокола колеса мотоцикла");
+                    return;
+                }
+                else
+                {
+                    string DataMotor = "Мотоцикл. Скорость: " + MotorSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + MotorPunctureProbability_Text.Text.Replace(".", ",") + "; Наличие коляски: " + result + Environment.NewLine + "; ";
+                    File.AppendAllText(path, DataMotor);
+                    MotorSpeed_TB.Value = 1;
+                    MSpeed_L.Text = MotorSpeed_TB.Value.ToString();
+                    MotorPunctureProbability_Text.Text = "";
+                    Presence_Chek.Checked = false;
+                }                
+            }
         }
         
         //Возврат к списку участников

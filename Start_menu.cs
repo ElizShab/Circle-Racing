@@ -17,6 +17,7 @@ namespace CircleRacing
         {
             InitializeComponent();
             label2.Text = "Количество участников: " + File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt").Length;
+            Visualization.LengthTrack = (int)TrackLength_NUD.Value;
         }
 
         //Гонка (Изменится на изначальное окно участников)

@@ -9,18 +9,13 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CircleRacing
-{
-      
+{      
     public partial class Visualization : Form
-    {  
-        //Тестовые переменные скорости
-        double speed1 = 40, speed2 = 120;
-        double procol1, procol2;
-
-        //Массивы переменных для извлечения парраметров из файла
-        int[] speed=new int [10];
+    {   //Массивы переменных для извлечения парраметров из файла
+        PictureBox[] Transport;
+        double[] speed=new double[10];
         double[] procol = new double[10];
-        
+        double[] dopParams = new double[10];        
 
         //Расположение и другие координаты
         private Point center;
@@ -28,9 +23,9 @@ namespace CircleRacing
         public static int LengthTrack;
         private int a1 = 100, b1 = (int)((Visualization.LengthTrack - 3000) * 0.05 + x1 + 40), a2 = 120, b2 = (int)((Visualization.LengthTrack - 3000) * 0.05 + x2 - 50);
         int x , y;
-        
-
-        public Visualization()
+              
+    
+    public Visualization()
         {
             InitializeComponent();
             //Центр PictureBox`а
@@ -39,24 +34,46 @@ namespace CircleRacing
             Move_T.Tick += Move_T_Tick;
             Move_T.Enabled = !Move_T.Enabled;
 
+            //Проба работы через массив
+            Transport = new PictureBox[] { pictureBox1, pictureBox2};
+
             //Взятие данных из файла
             string[] lines = File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt");
-            for (int i = 1; i < lines.Length; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 //Маски
                 var rgSpeed = new Regex(@"Скорость: (.*); Вероятность");
                 var rgProcol = new Regex(@"колеса: (.*); ");
+                //Авто
+                var rgAutoPeople = new Regex(@"машине: (.*);");
+                //Грузовик
+                var rgTruckWeight = new Regex(@"груза: (.*);");
+                //Мотоцикл
+                var rgMotorSidecar = new Regex(@"коляски: (.*);");
 
                 //Извлечение данных из строки
                 var SpeedResult = rgSpeed.Match(lines[i]).Groups[1].Value;
                 var ProcolResult = rgProcol.Match(lines[i]).Groups[1].Value;
+                string DopParamsResult = "";
+
+                if (lines[i].IndexOf("Автомобиль") > -1)
+                    DopParamsResult = rgAutoPeople.Match(lines[i]).Groups[1].Value;
+                else if (lines[i].IndexOf("Грузовик") > -1)
+                    DopParamsResult = rgTruckWeight.Match(lines[i]).Groups[1].Value;
+                else if(lines[i].IndexOf("Мотоцикл") > -1)
+                {
+                    DopParamsResult = rgMotorSidecar.Match(lines[i]).Groups[1].Value;
+                    if (DopParamsResult == "Есть")
+                        DopParamsResult = 1.ToString();
+                    else if (DopParamsResult == "-")
+                        DopParamsResult = 0.ToString();
+                }    
 
                 //Присвоение извлечённых данных нужным массивам
                 speed[i] = Convert.ToInt32(SpeedResult);
                 procol[i] = Convert.ToDouble(ProcolResult);
+                dopParams[i] = Convert.ToInt32(DopParamsResult);
             }            
-            //Проверка корректности извлечённых данных
-            label1.Text = procol[5].ToString();
         }
 
         //Рисование простых объектов
@@ -82,53 +99,44 @@ namespace CircleRacing
         private void Move_T_Tick(object sender, EventArgs e)
         {
             //Тестирование прокола колеса
-            procol1 += 0.005;
-            procol2 += 0.005;
-
+           for (int i = 0; i<procol.Length;i++)
+            {
+                procol[i] += 0.005;
+            }
             Refresh();
-            MovePictureboxes(procol1,procol2);
+            MovePictureboxes(procol);
+            label1.Text = pictureBox2.Location.ToString();
         }
 
         //Движение машинок
-        private void MovePictureboxes(double procol1, double procol2)
+        private void MovePictureboxes(double[] procol)
         {
             //Точка для передвижения
-            Point loc = new Point();
-            
-            //Движение первого объекта (Двигается не верно, тестируется)
-            x = (int)(b1 * Math.Cos(0)+ speed1);
-            y = (int)(a1 * Math.Sin(1)+ speed1);
-            loc = new Point(x, y);
-            loc.Offset(center.X, center.Y);
-            loc.Offset(-pictureBox1.Width / 2, -pictureBox1.Height / 2);
-            pictureBox1.Location = loc;
+            Point loc = new Point();           
 
-            //Движение второго объекта (ДВижется верно, но не имеет единого старта, не изменяется)
-            x = (int)(b2 * Math.Cos(speed2));
-            y = (int)(a2 * Math.Sin(speed2));
-            loc = new Point(x, y);
-            loc.Offset(center.X, center.Y);
-            loc.Offset(-pictureBox2.Width / 2, -pictureBox2.Height / 2);
-            pictureBox2.Location = loc;
+            //Движение
+            for (int i = 0; i < Transport.Length; i++)
+            {
+                x = (int)(b2 * Math.Cos(speed[i]));
+                y = (int)(a2 * Math.Sin(speed[i]));
+                loc = new Point(x, y);
+                loc.Offset(center.X, center.Y);
+                loc.Offset(-pictureBox2.Width / 2, -pictureBox2.Height / 2);
+                Transport[i].Location = loc;
+            }
 
             //Условие прокола колеса (Имитация), пока что без возврата к движению
-            if (procol1 <= 1.5) 
-               speed1 += speed1 * 0.001;
-            else
+            for (int i = 0; i < Transport.Length; i++)
             {
-                speed1 += 0;
-                //Подождать n секунд и продолжить движение, так же свести вероятность прокола на  0
-                // ...
-            }
-
-            if (procol2 <= 1.5) 
-              speed2 += speed2 * 0.001;
-            else
-            {
-                speed2 += 0;
-                //Подождать n секунд и продолжить движение, так же свести вероятность прокола на  0
-                // ...
-            }
+                if (procol[i] <= 1.5)
+                    speed[i] += speed[i] * 0.001;
+                else
+                {
+                    speed[i] += 0;
+                    //Подождать n секунд и продолжить движение, так же свести вероятность прокола на  0
+                    // ...
+                }
+            }           
         }
     }
 }
