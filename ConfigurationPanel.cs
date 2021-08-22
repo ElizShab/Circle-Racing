@@ -49,7 +49,7 @@ namespace CircleRacing
                 }
                 else
                 {
-                    string DataAuto = "Автомобиль. Скорость: " + AutoSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + AutoPunctureProbability_Text.Text.Replace(".", ",") + "; Количество человек в машине: " + PeopleInAuto_NUD.Value.ToString() + Environment.NewLine+"; ";
+                    string DataAuto = "    Автомобиль. Скорость: " + AutoSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + AutoPunctureProbability_Text.Text.Replace(".", ",") + "; Количество человек в машине: " + PeopleInAuto_NUD.Value.ToString() + ","+ Environment.NewLine;
                     File.AppendAllText(path, DataAuto); 
                     AutoSpeed_TB.Value = 1;
                     ASpeed_L.Text = AutoSpeed_TB.Value.ToString();
@@ -79,7 +79,7 @@ namespace CircleRacing
                     return;
                 }
                 else {
-                    string DataTruck = "Грузовик. Скорость: " + TruckSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + TruckPunctureProbability_Text.Text.Replace(".", ",") + "; Вес груза: " + TruckWeight_Text.Text + Environment.NewLine + "; ";
+                    string DataTruck = "    Грузовик. Скорость: " + TruckSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + TruckPunctureProbability_Text.Text.Replace(".", ",") + "; Вес груза: " + TruckWeight_Text.Text  + "," + Environment.NewLine ;
                     File.AppendAllText(path, DataTruck);
                     TruckSpeed_TB.Value = 1;
                     TSpeed_L.Text = TruckSpeed_TB.Value.ToString();
@@ -113,7 +113,7 @@ namespace CircleRacing
                 }
                 else
                 {
-                    string DataMotor = "Мотоцикл. Скорость: " + MotorSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + MotorPunctureProbability_Text.Text.Replace(".", ",") + "; Наличие коляски: " + result + Environment.NewLine + "; ";
+                    string DataMotor = "    Мотоцикл. Скорость: " + MotorSpeed_TB.Value.ToString() + "; Вероятность прокола колеса: " + MotorPunctureProbability_Text.Text.Replace(".", ",") + "; Наличие коляски: " + result  + "," + Environment.NewLine ;
                     File.AppendAllText(path, DataMotor);
                     MotorSpeed_TB.Value = 1;
                     MSpeed_L.Text = MotorSpeed_TB.Value.ToString();

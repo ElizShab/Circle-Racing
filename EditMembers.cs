@@ -73,5 +73,16 @@ namespace CircleRacing
             }
             new Start_menu().Show();
         }
+
+        private void Start_B_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                for (int i = 0; i < listBox1.Items.Count; i++)
+                    sw.WriteLine(listBox1.Items[i].ToString());
+            }
+            new Visualization().Show();
+            this.Show();
+        }
     }
 }

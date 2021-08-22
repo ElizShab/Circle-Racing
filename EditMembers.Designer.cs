@@ -32,11 +32,12 @@ namespace CircleRacing
             this.AddMember_B = new System.Windows.Forms.Button();
             this.DeleteMember_B = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.Start_B = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddMember_B
             // 
-            this.AddMember_B.Location = new System.Drawing.Point(360, 351);
+            this.AddMember_B.Location = new System.Drawing.Point(26, 328);
             this.AddMember_B.Name = "AddMember_B";
             this.AddMember_B.Size = new System.Drawing.Size(139, 65);
             this.AddMember_B.TabIndex = 1;
@@ -46,7 +47,7 @@ namespace CircleRacing
             // 
             // DeleteMember_B
             // 
-            this.DeleteMember_B.Location = new System.Drawing.Point(360, 438);
+            this.DeleteMember_B.Location = new System.Drawing.Point(727, 328);
             this.DeleteMember_B.Name = "DeleteMember_B";
             this.DeleteMember_B.Size = new System.Drawing.Size(139, 57);
             this.DeleteMember_B.TabIndex = 2;
@@ -65,11 +66,23 @@ namespace CircleRacing
             this.listBox1.Size = new System.Drawing.Size(855, 304);
             this.listBox1.TabIndex = 3;
             // 
+            // Start_B
+            // 
+            this.Start_B.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Start_B.Location = new System.Drawing.Point(376, 328);
+            this.Start_B.Name = "Start_B";
+            this.Start_B.Size = new System.Drawing.Size(158, 76);
+            this.Start_B.TabIndex = 4;
+            this.Start_B.Text = "Начать гонку";
+            this.Start_B.UseVisualStyleBackColor = true;
+            this.Start_B.Click += new System.EventHandler(this.Start_B_Click);
+            // 
             // EditMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 511);
+            this.Controls.Add(this.Start_B);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.DeleteMember_B);
             this.Controls.Add(this.AddMember_B);
@@ -85,5 +98,6 @@ namespace CircleRacing
         private System.Windows.Forms.Button AddMember_B;
         private System.Windows.Forms.Button DeleteMember_B;
         public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button Start_B;
     }
 }

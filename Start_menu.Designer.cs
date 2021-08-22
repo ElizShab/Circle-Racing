@@ -33,7 +33,6 @@ namespace CircleRacing
             this.label1 = new System.Windows.Forms.Label();
             this.TrackLength_NUD = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.EditListMembers_B = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TrackLength_NUD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,22 +87,11 @@ namespace CircleRacing
             this.label2.TabIndex = 3;
             this.label2.Text = "Количество участников: 0";
             // 
-            // EditListMembers_B
-            // 
-            this.EditListMembers_B.Location = new System.Drawing.Point(330, 12);
-            this.EditListMembers_B.Name = "EditListMembers_B";
-            this.EditListMembers_B.Size = new System.Drawing.Size(33, 29);
-            this.EditListMembers_B.TabIndex = 4;
-            this.EditListMembers_B.Text = "button1";
-            this.EditListMembers_B.UseVisualStyleBackColor = true;
-            this.EditListMembers_B.Click += new System.EventHandler(this.EditListMembers_B_Click);
-            // 
             // Start_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 296);
-            this.Controls.Add(this.EditListMembers_B);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TrackLength_NUD);
             this.Controls.Add(this.label1);
@@ -122,7 +110,6 @@ namespace CircleRacing
 
         private System.Windows.Forms.Button Start_B;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button EditListMembers_B;
         public System.Windows.Forms.NumericUpDown TrackLength_NUD;
         public System.Windows.Forms.Label label2;
     }

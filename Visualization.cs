@@ -11,20 +11,29 @@ using System.Windows.Forms;
 namespace CircleRacing
 {      
     public partial class Visualization : Form
-    {   //Массивы переменных для извлечения парраметров из файла
-        PictureBox[] Transport;
-        double[] speed=new double[10];
-        double[] procol = new double[10];
-        double[] dopParams = new double[10];        
+    {
+       static string  path = @"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt";
 
+        PictureBox[] Transport = new PictureBox[File.ReadAllLines(path).Length];
+        Label[] TransportInfo = new Label[File.ReadAllLines(path).Length];
+
+        PictureBox[] Finish = new PictureBox[File.ReadAllLines(path).Length];
+
+        //Информация об автомобилях
+        double[] speed=new double[File.ReadAllLines(path).Length];
+        double[] procol = new double[File.ReadAllLines(path).Length];
+        double[] dopParams = new double[File.ReadAllLines(path).Length];     
+
+        //В разработке
+        double[] distance = new double[File.ReadAllLines(path).Length];
+        
         //Расположение и другие координаты
         private Point center;
         static int x1=70, x2=150, y1=80, y2=160;
         public static int LengthTrack;
-        private int a1 = 100, b1 = (int)((Visualization.LengthTrack - 3000) * 0.05 + x1 + 40), a2 = 120, b2 = (int)((Visualization.LengthTrack - 3000) * 0.05 + x2 - 50);
+        private int a2 = 120, b2 = (int)((Visualization.LengthTrack - 3000) * 0.05 + x2 - 50);
         int x , y;
-              
-    
+            
     public Visualization()
         {
             InitializeComponent();
@@ -34,28 +43,47 @@ namespace CircleRacing
             Move_T.Tick += Move_T_Tick;
             Move_T.Enabled = !Move_T.Enabled;
 
-            //Проба работы через массив
-            Transport = new PictureBox[] { pictureBox1, pictureBox2};
+            //Создание PictureBox`ов под количество машин
+            for (int i = 0; i<Transport.Length; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Width = 20;
+                pictureBox.Height = 20;
+                pictureBox.BackColor = Color.Black;
+                pictureBox.Location = new Point(Picture_PB.Width / 2, Picture_PB.Height / 2);
+                Transport[i] = pictureBox;
+                Picture_PB.Controls.Add(pictureBox);
+            }
+
+            //Создание Label`ов под количество машин
+            for (int i = 0; i < Transport.Length; i++)
+            {
+                Label Labelmini = new Label();
+                Labelmini.Location = new Point(30+i*200,35);
+                TransportInfo[i] = Labelmini;
+                Picture_PB.Controls.Add(Labelmini);
+            }
 
             //Взятие данных из файла
-            string[] lines = File.ReadAllLines(@"C:\Users\rozhk\source\repos\CircleRacing\DataMembers.txt");
-            for (int i = 0; i < lines.Length; i++)
+            string[] lines = File.ReadAllLines(path);
+            for (int i = 0; i < Transport.Length; i++)
             {
                 //Маски
                 var rgSpeed = new Regex(@"Скорость: (.*); Вероятность");
                 var rgProcol = new Regex(@"колеса: (.*); ");
                 //Авто
-                var rgAutoPeople = new Regex(@"машине: (.*);");
+                var rgAutoPeople = new Regex(@"машине: (.*),");
                 //Грузовик
-                var rgTruckWeight = new Regex(@"груза: (.*);");
+                var rgTruckWeight = new Regex(@"груза: (.*),");
                 //Мотоцикл
-                var rgMotorSidecar = new Regex(@"коляски: (.*);");
+                var rgMotorSidecar = new Regex(@"коляски: (.*),");
 
                 //Извлечение данных из строки
                 var SpeedResult = rgSpeed.Match(lines[i]).Groups[1].Value;
                 var ProcolResult = rgProcol.Match(lines[i]).Groups[1].Value;
                 string DopParamsResult = "";
 
+                //Особые характеритики ТС
                 if (lines[i].IndexOf("Автомобиль") > -1)
                     DopParamsResult = rgAutoPeople.Match(lines[i]).Groups[1].Value;
                 else if (lines[i].IndexOf("Грузовик") > -1)
@@ -63,10 +91,10 @@ namespace CircleRacing
                 else if(lines[i].IndexOf("Мотоцикл") > -1)
                 {
                     DopParamsResult = rgMotorSidecar.Match(lines[i]).Groups[1].Value;
-                    if (DopParamsResult == "Есть")
-                        DopParamsResult = 1.ToString();
+                    if (DopParamsResult.Trim() == "Есть")
+                        DopParamsResult = "1";
                     else if (DopParamsResult == "-")
-                        DopParamsResult = 0.ToString();
+                        DopParamsResult = "0";
                 }    
 
                 //Присвоение извлечённых данных нужным массивам
@@ -96,47 +124,66 @@ namespace CircleRacing
         }
 
         //Каждый тик таймера
+        int tick = 0;
         private void Move_T_Tick(object sender, EventArgs e)
-        {
-            //Тестирование прокола колеса
-           for (int i = 0; i<procol.Length;i++)
+        {            
+            //Увеличение вероятности прокола колеса
+           for (int i = 0; i<Transport.Length;i++)
             {
                 procol[i] += 0.005;
             }
+
             Refresh();
-            MovePictureboxes(procol);
-            label1.Text = pictureBox2.Location.ToString();
+
+            tick++;
+            MovePictureboxes(procol,tick);
         }
 
         //Движение машинок
-        private void MovePictureboxes(double[] procol)
+        int timerLeft = 100;
+               
+        private void MovePictureboxes(double[] procol, int tick)
         {
             //Точка для передвижения
-            Point loc = new Point();           
+            Point loc = new Point();
 
             //Движение
             for (int i = 0; i < Transport.Length; i++)
             {
-                x = (int)(b2 * Math.Cos(speed[i]));
-                y = (int)(a2 * Math.Sin(speed[i]));
-                loc = new Point(x, y);
-                loc.Offset(center.X, center.Y);
-                loc.Offset(-pictureBox2.Width / 2, -pictureBox2.Height / 2);
-                Transport[i].Location = loc;
-            }
+                    x = (int)(b2 * Math.Cos(speed[i]));
+                    y = (int)(a2 * Math.Sin(speed[i]));
+                    loc = new Point(x, y);
+                    loc.Offset(center.X, center.Y);
+                    loc.Offset(-Transport[i].Width / 2, -Transport[i].Height / 2);
+                    Transport[i].Location = loc;
 
-            //Условие прокола колеса (Имитация), пока что без возврата к движению
-            for (int i = 0; i < Transport.Length; i++)
-            {
+                //Условие прокола колеса  
                 if (procol[i] <= 1.5)
                     speed[i] += speed[i] * 0.001;
                 else
                 {
-                    speed[i] += 0;
-                    //Подождать n секунд и продолжить движение, так же свести вероятность прокола на  0
-                    // ...
+                    if (timerLeft > 0)
+                    {
+                        speed[i] += 0;
+                        timerLeft = timerLeft - 1;
+                    }
+                    else
+                    {
+                        procol[i] = 0;
+                        speed[i] += speed[i] * 0.001;
+                        timerLeft = 100;
+                    }
                 }
-            }           
+                TransportInfo[i].Text = Transport[i].Location.ToString();
+            }
+
+            
+            for(int i =0;i<Transport.Length;i++)
+            {
+                double D = (tick / 4.6) * 2 * speed[i];
+                distance[i] = D;
+            }
+
         }
     }
 }
